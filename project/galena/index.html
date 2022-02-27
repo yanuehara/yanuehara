@@ -1,0 +1,194 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Wowchemy 5.4.0 for Hugo">
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+<link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media=print onload="this.media='all'">
+<meta name=author content="Yan Uehara">
+<meta name=description content="Devices’ authentication is one of the key requirements to provide security in IoT environments. However, current Adaptative Authentication Systems (AAS) employ adaptation factors in an isolated way and ignore the correlation between them, as well as the relations that the devices build in the contexts where they are located. Those AASs show themselves as rigid about the most compatible mechanisms in one given context and do not provide multi-factor adaptation. This work proposes GALENA as an adaptive authentication management system in IoT networks, based on social trust strategies, devices’ context, and policies. The GALENA evaluation showed its efficiency in adapting and selecting the authentication mechanism appropriated for each interaction">
+<link rel=alternate hreflang=en-us href=https://yanuehara.dev/project/galena/>
+<meta name=theme-color content="#bbdefb">
+<link rel=stylesheet href=/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css media=print onload="this.media='all'">
+<link rel=stylesheet href=/css/wowchemy.1b0e116046af73d16142214bba82f8a5.css>
+<link rel=manifest href=/manifest.webmanifest>
+<link rel=icon type=image/png href=/media/icon_hu05798da5833095988f190093553a38f3_1610_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=/media/icon_hu05798da5833095988f190093553a38f3_1610_180x180_fill_lanczos_center_3.png>
+<link rel=canonical href=https://yanuehara.dev/project/galena/>
+<meta property="twitter:card" content="summary">
+<meta property="og:site_name" content="Yan Uehara">
+<meta property="og:url" content="https://yanuehara.dev/project/galena/">
+<meta property="og:title" content="GALENA | Yan Uehara">
+<meta property="og:description" content="Devices’ authentication is one of the key requirements to provide security in IoT environments. However, current Adaptative Authentication Systems (AAS) employ adaptation factors in an isolated way and ignore the correlation between them, as well as the relations that the devices build in the contexts where they are located. Those AASs show themselves as rigid about the most compatible mechanisms in one given context and do not provide multi-factor adaptation. This work proposes GALENA as an adaptive authentication management system in IoT networks, based on social trust strategies, devices’ context, and policies. The GALENA evaluation showed its efficiency in adapting and selecting the authentication mechanism appropriated for each interaction"><meta property="og:image" content="https://yanuehara.dev/media/icon_hu05798da5833095988f190093553a38f3_1610_512x512_fill_lanczos_center_3.png">
+<meta property="twitter:image" content="https://yanuehara.dev/media/icon_hu05798da5833095988f190093553a38f3_1610_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
+<meta property="article:published_time" content="2022-02-25T12:52:27-03:00">
+<meta property="article:modified_time" content="2022-02-25T12:52:27-03:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://yanuehara.dev/project/galena/"},"headline":"GALENA","datePublished":"2022-02-25T12:52:27-03:00","dateModified":"2022-02-25T12:52:27-03:00","author":{"@type":"Person","name":"Yan Uehara"},"publisher":{"@type":"Organization","name":"Yan Uehara","logo":{"@type":"ImageObject","url":"https://yanuehara.dev/media/icon_hu05798da5833095988f190093553a38f3_1610_192x192_fill_lanczos_center_3.png"}},"description":"Devices’ authentication is one of the key requirements to provide security in IoT environments. However, current Adaptative Authentication Systems (AAS) employ adaptation factors in an isolated way and ignore the correlation between them, as well as the relations that the devices build in the contexts where they are located. Those AASs show themselves as rigid about the most compatible mechanisms in one given context and do not provide multi-factor adaptation. This work proposes GALENA as an adaptive authentication management system in IoT networks, based on social trust strategies, devices’ context, and policies. The GALENA evaluation showed its efficiency in adapting and selecting the authentication mechanism appropriated for each interaction"}</script>
+<title>GALENA | Yan Uehara</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class="page-wrapper dark" data-wc-page-id=85b12f788448dde002671972d34142b3>
+<script src=/js/wowchemy-init.min.d333d96014f7bcfa311294a92ace0d60.js></script>
+<div class=page-header>
+<header class=header--fixed>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container-xl>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=/>Yan Uehara</a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar-content aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=/>Yan Uehara</a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class=nav-item>
+<a class=nav-link href=/#about><span>Home</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#posts><span>Posts</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#projects><span>Projects</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/courses><span>Short Courses and Tutorials</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#publications><span>Publications</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#contact><span>Contact</span></a>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+</ul>
+</div>
+</nav>
+</header>
+</div>
+<div class=page-body>
+<article class="article article-project">
+<div class="article-container pt-3">
+<h1>GALENA</h1>
+<div class=article-metadata>
+<div>
+<span class=author-highlighted>
+<a href=/authors/yan-uehara-de-moraes/>Yan Uehara</a></span>, <span>
+<a href=/authors/carlos-pedroso/>Carlos Pedroso</a></span>, <span>
+<a href=/authors/michele-nogueira/>Michele Nogueira</a></span>, <span>
+<a href=/authors/aldri-santos/>Aldri Santos</a></span>
+</div>
+<span class=article-date>
+Feb 25, 2022
+</span>
+</div>
+</div>
+<div class=article-container>
+<div class=article-style>
+<p>Devices’ authentication is one of the key requirements to provide security in IoT environments. However, current Adaptative Authentication Systems (AAS) employ adaptation factors in an isolated way and ignore the correlation between them, as well as the relations that the devices build in the contexts where they are located. Those AASs show themselves as rigid about the most compatible mechanisms in one given context and do not provide multi-factor adaptation. This work proposes GALENA ((mana<strong>G</strong>ement of <strong>A</strong>daptive authentication based on poLici<strong>E</strong>s a<strong>N</strong>d soci<strong>A</strong>l trust)) as an adaptive authentication management system in IoT networks, based on social trust strategies, devices’ context, and policies. The GALENA evaluation showed its efficiency in adapting and selecting the authentication mechanism appropriated for each interaction.</p>
+</div>
+<div class=article-tags>
+<a class="badge badge-light" href=/tag/iot/>IoT</a>
+<a class="badge badge-light" href=/tag/adaptive-authentication/>Adaptive Authentication</a>
+<a class="badge badge-light" href=/tag/social-trust/>Social Trust</a>
+<a class="badge badge-light" href=/tag/policies/>Policies</a>
+</div>
+<div class=share-box>
+<ul class=share>
+<li>
+<a href="https://twitter.com/intent/tweet?url=https://yanuehara.dev/project/galena/&text=GALENA" target=_blank rel=noopener class=share-btn-twitter aria-label=twitter>
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="https://www.facebook.com/sharer.php?u=https://yanuehara.dev/project/galena/&t=GALENA" target=_blank rel=noopener class=share-btn-facebook aria-label=facebook>
+<i class="fab fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="mailto:?subject=GALENA&body=https://yanuehara.dev/project/galena/" target=_blank rel=noopener class=share-btn-email aria-label=envelope>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/shareArticle?url=https://yanuehara.dev/project/galena/&title=GALENA" target=_blank rel=noopener class=share-btn-linkedin aria-label=linkedin-in>
+<i class="fab fa-linkedin-in"></i>
+</a>
+</li>
+<li>
+<a href="whatsapp://send?text=GALENA%20https://yanuehara.dev/project/galena/" target=_blank rel=noopener class=share-btn-whatsapp aria-label=whatsapp>
+<i class="fab fa-whatsapp"></i>
+</a>
+</li>
+<li>
+<a href="https://service.weibo.com/share/share.php?url=https://yanuehara.dev/project/galena/&title=GALENA" target=_blank rel=noopener class=share-btn-weibo aria-label=weibo>
+<i class="fab fa-weibo"></i>
+</a>
+</li>
+</ul>
+</div>
+<div class="media author-card content-widget-hr">
+<a href=https://yanuehara.dev><img class="avatar mr-3 avatar-circle" src=/authors/yan-uehara-de-moraes/avatar_hu504a462397efcea0c3e0740ecc012cff_12065_270x270_fill_q75_lanczos_center.jpg alt="Yan Uehara"></a>
+<div class=media-body>
+<h5 class=card-title><a href=https://yanuehara.dev>Yan Uehara</a></h5>
+<h6 class=card-subtitle>Post-Graduate at Universidade Federal do Paraná<br>
+Developer</h6>
+<ul class=network-icon aria-hidden=true>
+<li>
+<a href=/#contact>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="project-related-pages content-widget-hr">
+</div>
+</div>
+</article>
+</div>
+<div class=page-footer>
+<div class=container>
+<footer class=site-footer>
+<p class=powered-by>
+Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target=_blank rel=noopener>Wowchemy</a> — the free, <a href=https://github.com/wowchemy/wowchemy-hugo-themes target=_blank rel=noopener>open source</a> website builder that empowers creators.
+</p>
+</footer>
+</div>
+</div>
+<script src=/js/vendor-bundle.min.b73dfaac3b6499dc997741748a7c3fe2.js></script>
+<script id=page-data type=application/json>{"use_headroom":true}</script>
+<script src=/js/wowchemy-headroom.0544814348b9f3d3df7712019bd852b2.js type=module></script>
+<script src=/en/js/wowchemy.min.0879156d664caf1dd0b240fa1b246a30.js></script>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+<script src=/js/wowchemy-publication.ee00aa4e09ee62617fe2dc15bfcb3f7b.js type=module></script>
+</body>
+</html>
